@@ -12,4 +12,7 @@ export default Navigation;
 
 const TitleStyled = styled.div`
   padding: 20px 152px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
 `;
