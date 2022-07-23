@@ -4,10 +4,12 @@ import ProductCard from '../components/ProductCard';
 import styled from 'styled-components';
 import { mockTheme1Produdcts, mockTheme2Produdcts } from '../data/mockData';
 import React, { useState, useEffect } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   // 다시 렌더링되는 조건 값(state)
   const [products, setProducts] = useState();
+  const navigate = useNavigate();
 
   // 조건에 의해서 실행되는 함수
   useEffect(() => {
@@ -50,8 +52,9 @@ const Home = () => {
         {products ? (
           products.map((product) => (
             <ProductCard
+              onClick={() => navigate(`product/${product.id}`)}
               key={product.id}
-              name={product.id}
+              name={product.name}
               description={product.description}
               thumbnail={product.thumbnail}
             />
