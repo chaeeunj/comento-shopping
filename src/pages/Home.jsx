@@ -3,11 +3,18 @@ import ThemeButton from '../components/ThemeButton';
 import ProductCard from '../components/ProductCard';
 import styled from 'styled-components';
 import { mockTheme1Produdcts, mockTheme2Produdcts } from '../data/mockData';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Home = () => {
-  // state(상태)
+  // 다시 렌더링되는 조건 값(state)
   const [products, setProducts] = useState();
+
+  // 조건에 의해서 실행되는 함수
+  useEffect(() => {
+    setTimeout(() => {
+      setProducts(mockTheme1Produdcts);
+    }, 1000);
+  });
 
   const onClickThemeButton = (themeId) => {
     if (themeId === 1) {
@@ -43,6 +50,7 @@ const Home = () => {
         {products ? (
           products.map((product) => (
             <ProductCard
+              key={product.id}
               name={product.id}
               description={product.description}
               thumbnail={product.thumbnail}
