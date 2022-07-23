@@ -3,15 +3,33 @@ import ThemeButton from '../components/ThemeButton';
 import ProductCard from '../components/ProductCard';
 import styled from 'styled-components';
 import { mockTheme1Produdcts, mockTheme2Produdcts } from '../data/mockData';
+import React, { useState } from 'react';
 
 const Home = () => {
+  // state(상태)
+  const [products, setProducts] = useState();
+
+  const onClickThemeButton = (themeId) => {
+    if (themeId === 1) {
+      setProducts(mockTheme1Produdcts);
+    } else if (themeId === 2) {
+      setProducts(mockTheme2Produdcts);
+    }
+  };
+
   return (
     <div>
       <div>
         <Navigation />
         <ThemeSection>
-          <ThemeButton themeName={'#겨울방한템'} />
-          <ThemeButton themeName={'#따순머그컵'} />
+          <ThemeButton
+            themeName={'#겨울방한템'}
+            onClick={() => onClickThemeButton(1)}
+          />
+          <ThemeButton
+            themeName={'#여름더워요'}
+            onClick={() => onClickThemeButton(2)}
+          />
         </ThemeSection>
 
         <GrayLine />
@@ -21,13 +39,18 @@ const Home = () => {
         {/* TODO: mockData list를 화면에 노출하자 */}
         {/* 자바스크립트 map 문법 */}
 
-        {mockTheme1Produdcts.map((product) => (
-          <ProductCard
-            name={product.id}
-            description={product.description}
-            thumbnail={product.thumbnail}
-          />
-        ))}
+        {/* 삼항연산자 */}
+        {products ? (
+          products.map((product) => (
+            <ProductCard
+              name={product.id}
+              description={product.description}
+              thumbnail={product.thumbnail}
+            />
+          ))
+        ) : (
+          <div>테마를 선택해주세요</div>
+        )}
       </ProductSection>
     </div>
   );
