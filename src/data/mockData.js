@@ -1,9 +1,8 @@
-export const mockTheme1Produdcts = [
+export const mockTheme1Products = [
   {
     id: 1,
     name: '비숑 블랙 머그잔',
-    description:
-      '쌀쌀한 날씨에 따뜻한 우유, 커피 한잔하기 좋은 블랙 & 화이트 비숑 머그잔입니다.',
+    description: '21,800원',
     thumbnail:
       'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product1.jpg',
   },
@@ -25,7 +24,7 @@ export const mockTheme1Produdcts = [
   },
 ];
 
-export const mockTheme2Produdcts = [
+export const mockTheme2Products = [
   {
     id: 7,
     name: '쏘쿨 냉감 이불',
@@ -49,3 +48,9 @@ export const mockTheme2Produdcts = [
       'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product6.jpg',
   },
 ];
+
+export const getProductDetail = (productId) => {
+  return [...mockTheme1Products, ...mockTheme2Products].find((product) => {
+    return product.id === Number(productId);
+  });
+};

@@ -2,7 +2,7 @@ import Navigation from '../components/Navigation';
 import ThemeButton from '../components/ThemeButton';
 import ProductCard from '../components/ProductCard';
 import styled from 'styled-components';
-import { mockTheme1Produdcts, mockTheme2Produdcts } from '../data/mockData';
+import { mockTheme1Products, mockTheme2Products } from '../data/mockData';
 import React, { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -14,15 +14,15 @@ const Home = () => {
   // 조건에 의해서 실행되는 함수
   useEffect(() => {
     setTimeout(() => {
-      setProducts(mockTheme1Produdcts);
+      setProducts(mockTheme1Products);
     }, 1000);
   });
 
   const onClickThemeButton = (themeId) => {
     if (themeId === 1) {
-      setProducts(mockTheme1Produdcts);
+      setProducts(mockTheme1Products);
     } else if (themeId === 2) {
-      setProducts(mockTheme2Produdcts);
+      setProducts(mockTheme2Products);
     }
   };
 
