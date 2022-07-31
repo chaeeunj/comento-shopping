@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Navigation from '../components/Navigation';
 import Review from '../components/Review';
 import { getProductDetail, mockReviews } from '../data/mockData';
+import * as storage from '../utils/storage';
 
 const ProductDetail = () => {
   // URL에서 paramter 변수(productId) 받아오는 로직
   let { productId } = useParams();
   const [product, setProduct] = useState();
   const [activeMenuTab, setActiveMenuTab] = useState('description');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const response = getProductDetail(productId);
@@ -19,6 +21,15 @@ const ProductDetail = () => {
   const onClickMenuTab = (menuTabName) => {
     setActiveMenuTab(menuTabName);
   };
+
+  const onClickAddBasketButton = () => {
+    // 장바구니에 아이템을 담는다
+    storage.addBasket(product);
+
+    // 장바구니 페이지로 이동한다
+    navigate('/basket');
+  };
+
   return (
     <Container>
       <Navigation />
@@ -64,18 +75,23 @@ const ProductDetail = () => {
           )}
         </main>
       )}
+      <AddBasketButton onClick={onClickAddBasketButton}>
+        장바구니 담기
+      </AddBasketButton>
     </Container>
   );
 };
 export default ProductDetail;
+
 const Container = styled.div``;
 const MainImage = styled.div`
-  width: 100%;
+  width: 390px;
   height: 420px;
   background-size: cover;
   background-position: center;
   margin-bottom: 24px;
 `;
+
 const ProductName = styled.div`
   font-weight: 700;
   font-size: 20px;
@@ -83,6 +99,7 @@ const ProductName = styled.div`
   letter-spacing: -0.01em;
   padding-bottom: 8px;
 `;
+
 const ProductDescription = styled.div`
   font-weight: 400;
   font-size: 16px;
@@ -91,9 +108,12 @@ const ProductDescription = styled.div`
   color: rgba(0, 0, 0, 0.86);
   padding-bottom: 24px;
 `;
+
 const MenuTabs = styled.div`
+  width: 390px;
   display: flex;
 `;
+
 const MenuTab = styled.div`
   flex: 1;
   padding: 14px;
@@ -101,6 +121,17 @@ const MenuTab = styled.div`
   text-align: center;
   background-color: ${(props) => props.active && '#eeeeee'};
 `;
+
 const ProductDetailImage = styled.img`
-  width: 100%;
+  width: 342px;
+  margin-left: 24px;
+`;
+
+const AddBasketButton = styled.div`
+  width: 390px;
+  height: 70px;
+  background-color: #13e19c;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
 `;

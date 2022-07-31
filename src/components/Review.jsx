@@ -21,7 +21,9 @@ const Review = ({ profileImage, username, score, createdDate, reviewText }) => {
 };
 
 const ReviewStyled = styled.div`
+  width: 341px;
   padding: 16px;
+  margin-left: 24px;
   background-color: #fafafa;
   margin: 10px 0px;
 `;

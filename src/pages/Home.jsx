@@ -4,7 +4,7 @@ import ProductCard from '../components/ProductCard';
 import styled from 'styled-components';
 import { mockTheme1Products, mockTheme2Products } from '../data/mockData';
 import React, { useState, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   // 다시 렌더링되는 조건 값(state)
