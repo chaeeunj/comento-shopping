@@ -55,8 +55,10 @@ const Home = () => {
               onClick={() => navigate(`product/${product.id}`)}
               key={product.id}
               name={product.name}
+              price={product.price}
               description={product.description}
               thumbnail={product.thumbnail}
+              mainImage={product.mainImage}
             />
           ))
         ) : (
