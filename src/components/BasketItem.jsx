@@ -26,6 +26,7 @@ export default BasketItem;
 const BasketItemStyled = styled.div`
   padding: 16px;
   margin: 10px 0px;
+  width: 360px;
 `;
 
 const RowLayout = styled.div`
@@ -62,6 +63,6 @@ const ProductName = styled.div`
 
 const GrayLine = styled.div`
   height: 1px;
-  width: 100%;
+  width: 342px;
   background: #eeeeee;
 `;

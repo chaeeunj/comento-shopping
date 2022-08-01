@@ -1,19 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import Navigation from '../components/Navigation';
+import BasketItem from '../components/BasketItem';
 import * as storage from '../utils/storage';
 
 const Basket = () => {
   const [basketItems, setBasketItems] = useState();
+  const [basketItemCount, setBasketItemCount] = useState(0);
 
   useEffect(() => {
     const items = storage.getBasketItems();
     setBasketItems(items);
-    console.log(items);
+    setBasketItemCount(items.length);
   }, []);
 
-  const onClickRemoveButton = () => {
-    alert('삭제');
+  useEffect(() => {
+    const items = storage.getBasketItems();
+    setBasketItems(items);
+  }, [basketItemCount]);
+
+  const onClickRemoveButton = (productId) => {
+    storage.removeBasketItem(productId);
+    setBasketItemCount(basketItemCount - 1);
   };
 
   return (
@@ -21,15 +30,17 @@ const Basket = () => {
       <Navigation name="장바구니" hasBack={true} />
 
       {basketItems &&
-        basketItems.map((item) => (
+        basketItems.map((product) => (
           <BasketItem
-            key={item.id}
-            thumbnail={item.thumbnail}
-            name={item.name}
-            price={item.price}
-            onClickRemoveButton={onClickRemoveButton}
+            key={product.id}
+            thumbnail={product.thumbnail}
+            name={product.name}
+            price={product.price}
+            onClickRemoveButton={() => onClickRemoveButton(product.id)}
           />
         ))}
+
+      <div> 상품 금액({basketItemCount})개</div>
     </BasketStyled>
   );
 };
@@ -37,5 +48,3 @@ const Basket = () => {
 export default Basket;
 
 const BasketStyled = styled.div``;
-
-const BasketItem = styled.div``;

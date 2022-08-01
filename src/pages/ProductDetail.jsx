@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Navigation from '../components/Navigation';
 import Review from '../components/Review';
 import { getProductDetail, mockReviews } from '../data/mockData';
-import * as storage from '../utils/storage';
+import * as webStorage from '../utils/storage';
 
 const ProductDetail = () => {
   // URL에서 paramter 변수(productId) 받아오는 로직
@@ -24,7 +24,7 @@ const ProductDetail = () => {
 
   const onClickAddBasketButton = () => {
     // 장바구니에 아이템을 담는다
-    storage.addBasket(product);
+    webStorage.addBasket(product);
 
     // 장바구니 페이지로 이동한다
     navigate('/basket');
@@ -133,5 +133,8 @@ const AddBasketButton = styled.div`
   background-color: #13e19c;
   font-weight: 700;
   font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 `;
