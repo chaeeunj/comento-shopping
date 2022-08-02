@@ -11,12 +11,12 @@ const Home = () => {
   const [products, setProducts] = useState();
   const navigate = useNavigate();
 
-  // 조건에 의해서 실행되는 함수
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setProducts(mockTheme1Products);
-  //   });
-  // });
+  // // 조건에 의해서 실행되는 함수
+  useEffect(() => {
+    setTimeout(() => {
+      setProducts(mockTheme1Products);
+    }, 1000);
+  }, []);
 
   const onClickThemeButton = (themeId) => {
     if (themeId === 1) {
