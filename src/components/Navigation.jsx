@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const Navigation = () => {
+const Navigation = ({ navigationName }) => {
   return (
     <div>
-      <TitleStyled> 코멘토 쇼핑 </TitleStyled>
+      <TitleStyled>{navigationName}</TitleStyled>
     </div>
   );
 };

@@ -27,7 +27,7 @@ const Basket = () => {
 
   return (
     <BasketStyled>
-      <Navigation name="장바구니" hasBack={true} />
+      <Navigation navigationName={'장바구니'} hasBack={true} />
 
       {basketItems &&
         basketItems.map((product) => (

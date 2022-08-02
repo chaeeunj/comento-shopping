@@ -12,11 +12,11 @@ const Home = () => {
   const navigate = useNavigate();
 
   // 조건에 의해서 실행되는 함수
-  useEffect(() => {
-    setTimeout(() => {
-      setProducts(mockTheme1Products);
-    }, 1000);
-  });
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setProducts(mockTheme1Products);
+  //   });
+  // });
 
   const onClickThemeButton = (themeId) => {
     if (themeId === 1) {
@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <div>
       <div>
-        <Navigation />
+        <Navigation navigationName="코멘토 쇼핑" />
         <ThemeSection>
           <ThemeButton
             themeName={'#겨울방한템'}
