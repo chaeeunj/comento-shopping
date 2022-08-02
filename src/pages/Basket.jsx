@@ -23,14 +23,18 @@ const Basket = () => {
 
   useEffect(() => {
     const items = storage.getBasketItems();
-    setBasketItemPrice(items);
-    // items.forEach((item) => console.log(1234, item.price));
-    items.forEach((item) => setBasketItemPrice(basketItemPrice + items.price));
+    let total = 0;
+    items.forEach((item) => (total += item.price));
+    setBasketItemPrice(total);
   }, []);
 
   const onClickRemoveButton = (productId) => {
     storage.removeBasketItem(productId);
-    setBasketItemCount(basketItemCount - 1);
+    setBasketItemCount(basketItems.length - 1);
+    const items = storage.getBasketItems();
+    let total = 0;
+    items.forEach((item) => (total += item.price));
+    setBasketItemPrice(total);
   };
 
   return (
