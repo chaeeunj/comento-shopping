@@ -8,6 +8,7 @@ import * as storage from '../utils/storage';
 const Basket = () => {
   const [basketItems, setBasketItems] = useState();
   const [basketItemCount, setBasketItemCount] = useState(0);
+  const [basketItemPrice, setBasketItemPrice] = useState(0);
 
   useEffect(() => {
     const items = storage.getBasketItems();
@@ -19,6 +20,13 @@ const Basket = () => {
     const items = storage.getBasketItems();
     setBasketItems(items);
   }, [basketItemCount]);
+
+  useEffect(() => {
+    const items = storage.getBasketItems();
+    setBasketItemPrice(items);
+    // items.forEach((item) => console.log(1234, item.price));
+    items.forEach((item) => setBasketItemPrice(basketItemPrice + items.price));
+  }, []);
 
   const onClickRemoveButton = (productId) => {
     storage.removeBasketItem(productId);
@@ -39,8 +47,14 @@ const Basket = () => {
             onClickRemoveButton={() => onClickRemoveButton(product.id)}
           />
         ))}
+      <AllBasketPrice>
+        <div>
+          <LeftBasketPrice>상품 금액({basketItemCount})개</LeftBasketPrice>
+          <RightBasketPrice>{basketItemPrice}원</RightBasketPrice>
+        </div>
 
-      <div> 상품 금액({basketItemCount})개</div>
+        <BuyButton>주문하기</BuyButton>
+      </AllBasketPrice>
     </BasketStyled>
   );
 };
@@ -48,3 +62,29 @@ const Basket = () => {
 export default Basket;
 
 const BasketStyled = styled.div``;
+
+const AllBasketPrice = styled.div`
+  padding-top: 227px;
+`;
+
+const LeftBasketPrice = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: -0.01em;
+  color: #616161;
+`;
+
+const RightBasketPrice = styled.div``;
+
+const BuyButton = styled.div`
+  width: 390px;
+  height: 70px;
+  background-color: #13e19c;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;

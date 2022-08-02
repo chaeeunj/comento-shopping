@@ -45,7 +45,7 @@ export const mockTheme2Products = [
     thumbnail:
       'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product4.jpg',
     mainImage:
-      'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product1.jpg',
+      'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product1_detail.jpeg',
   },
   {
     id: 5,
@@ -55,7 +55,7 @@ export const mockTheme2Products = [
     thumbnail:
       'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product5.jpg',
     mainImage:
-      'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product1.jpg',
+      'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product2_detail.jpeg',
   },
   {
     id: 6,
@@ -66,7 +66,7 @@ export const mockTheme2Products = [
     thumbnail:
       'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product6.jpg',
     mainImage:
-      'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product1.jpg',
+      'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product2_detail.jpeg',
   },
 ];
 
